@@ -1,7 +1,5 @@
 <?php
 
-<?php
-
 $inputArray = [
     147129,
 128896,
