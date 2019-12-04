@@ -22,7 +22,7 @@ while($input1){
     $distance1 = intval(substr($command1, 1));
     for($i=0; $i<$distance1; $i++){
         $pointer1 = move($pointer1, $direction1);
-        array_push($wire1, $pointer1);
+        array_push($wire1, implode(',', $pointer1));
     }
 
 }
@@ -33,16 +33,14 @@ while($input2){
     $distance2 = intval(substr($command2, 1));
     for($i=0;$i<$distance2;$i++){
         $pointer2 = move($pointer2, $direction2);
-        array_push($wire2, $pointer2);
+        array_push($wire2, implode(',', $pointer2));
     }
 }
 
-foreach($wire1 as $j){
-    foreach($wire2 as $k){
-        if($j[0]==$k[0] && $j[1]==$k[1]){
-            array_push($crossed, taxiDistance($start, $j));
-        }
-    }
+// Find intersections between arrays, calculate manhattan distance.
+$intersection = array_intersect($wire1, $wire2);
+foreach ($intersection as $i) {
+    $crossed[] = taxiDistance($start, explode(',', $i));
 }
 
 sort($crossed);
