@@ -26,10 +26,18 @@ for($passInt = $lowerBound; $passStr <= $upperBound; $passInt++){
         $flag = FALSE;
     }
     // Two adjacent digits are the same (like 22 in 122345).
+    // The two adjacent matching digits are not part of a larger group of matching digits!
     $counter = 0;
+    $ar =[];
     for($i = 0; $i < (strlen($passStr) - 1); $i++){
         if($passStr[$i] == $passStr[$i + 1]){
-                $counter++;
+                $ar[$passStr[$i]]++;
+        }
+    }
+    // The two adjacent matching digits are not part of a larger group of matching digits!
+    for($i = 0; $i < 10; $i ++){
+        if($ar[$i] == 1){
+            $counter ++;
         }
     }
     if($counter == 0){
