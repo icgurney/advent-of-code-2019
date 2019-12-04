@@ -41,17 +41,17 @@ $timings=[];
 // Find intersections between arrays, calculate manhattan distance.
 $intersection = array_intersect($wire1, $wire2);
 foreach ($intersection as $i) {
-    foreach($wire1 as $j => $v){
-        if($i==$v){
-            $timings[$i]=$j;
+    foreach($wire1 as $key => $value){
+        if($i==$value){
+            $timings[$i]=($key+1);
         }
     };
 }
 
 foreach ($intersection as $i) {
-    foreach($wire2 as $j => $v){
-        if($i==$j){
-            $timings[$i]+=$j;
+    foreach($wire2 as $key => $value){
+        if($i==$value){
+            $timings[$i]+=($key+1);
         }
     };
 }
